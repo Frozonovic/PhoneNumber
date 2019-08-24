@@ -1,0 +1,9 @@
+stages:
+  - build
+
+javac:
+  stage: build
+  image: openjdk:12
+  script:
+  - javac *.java
+
