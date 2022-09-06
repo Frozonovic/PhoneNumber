@@ -1,15 +1,23 @@
+// Import used for string conversions
 import java.lang.StringBuilder;
 
+
+/**
+ * Models a phone number structured like a phone numpad
+ *
+ * @author blee20@georgefox.edu
+ */
 public class PhoneNumber
 {
     private final String _originalNumber;
-    private final String convertedNumber;
+    private final String _convertedNumber;
 
 
     public PhoneNumber(String phoneNumber)
     {
         StringBuilder sb = new StringBuilder();
 
+        // Logic to convert letter values to proper number values
         for (int i = 0; i < phoneNumber.length(); i++)
         {
             char c = phoneNumber.charAt(i);
@@ -48,16 +56,23 @@ public class PhoneNumber
         }
 
         _originalNumber = phoneNumber;
-        convertedNumber = sb.toString();
+        _convertedNumber = sb.toString();
 
     }
 
+
+    /**
+     * Accesses the area code from stored convertedNumber
+     *
+     * @return The area code depending on type of phone number (returnValue)
+     */
     public String getAreaCode()
     {
         String returnValue;
         StringBuilder sb = new StringBuilder();
 
-        if (convertedNumber.startsWith("1800"))
+        // Logic to determine phone number type and return appropriately
+        if (_convertedNumber.startsWith("1800"))
         {
             returnValue = "1800";
         }
@@ -76,13 +91,19 @@ public class PhoneNumber
         return returnValue;
     }
 
+
+    /**
+     * Accesses both versions of the phone number stored and builds a string for them
+     *
+     * @return The string created using a StringBuilder (sb)
+     */
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
 
         sb.append("java.PhoneNumber\n");
         sb.append(_originalNumber).append('\n');
-        sb.append(convertedNumber);
+        sb.append(_convertedNumber);
         return sb.toString();
     }
     public static void main(String[] args)
