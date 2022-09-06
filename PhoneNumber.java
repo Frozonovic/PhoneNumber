@@ -1,65 +1,80 @@
-import java.util.ArrayList;
 import java.lang.StringBuilder;
 
 public class PhoneNumber
 {
     private final String _originalNumber;
-    private String convertedNumber;
+    private final String convertedNumber;
 
 
     public PhoneNumber(String phoneNumber)
     {
-        StringBuilder build1 = new StringBuilder();
-        StringBuilder build2 = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < phoneNumber.length(); i++)
         {
             char c = phoneNumber.charAt(i);
 
-            if (c != '-')
-            {
-                build1.append(c);
-            }
-
             switch (c)
             {
                 case 'a', 'b', 'c', 'A', 'B', 'C':
-                    build2.append('2');
+                    sb.append('2');
                     break;
                 case 'd', 'e', 'f', 'D', 'E', 'F':
-                    build2.append('3');
+                    sb.append('3');
                     break;
                 case 'g', 'h', 'i', 'G', 'H', 'I':
-                    build2.append('4');
+                    sb.append('4');
                     break;
                 case 'j', 'k', 'l', 'J', 'K', 'L':
-                    build2.append('5');
+                    sb.append('5');
                     break;
                 case 'm', 'n', 'o', 'M', 'N', 'O':
-                    build2.append('6');
+                    sb.append('6');
                     break;
                 case 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S':
-                    build2.append('7');
+                    sb.append('7');
                     break;
                 case 't', 'u', 'v', 'T', 'U', 'V':
-                    build2.append('8');
+                    sb.append('8');
                     break;
                 case 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z':
-                    build2.append('9');
+                    sb.append('9');
                     break;
                 case '-':
                     break;
                 default:
-                    build2.append(c);
+                    sb.append(c);
             }
         }
 
         _originalNumber = phoneNumber;
-        convertedNumber = build2.toString();
+        convertedNumber = sb.toString();
 
     }
 
+    public String getAreaCode()
+    {
+        String returnValue;
+        StringBuilder sb = new StringBuilder();
+
+        if (convertedNumber.startsWith("1800"))
+        {
+            returnValue = "1800";
+        }
+
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                char c = _originalNumber.charAt(i);
+                sb.append(c);
+            }
+            returnValue = sb.toString();
+        }
+
+
+        return returnValue;
+    }
 
     public String toString()
     {
@@ -72,7 +87,8 @@ public class PhoneNumber
     }
     public static void main(String[] args)
     {
-        PhoneNumber f = new PhoneNumber("1-800-FLOWERS");
-        System.out.print(f);
+        PhoneNumber f = new PhoneNumber("360-957-8562");
+        System.out.println(f);
+        System.out.println(f.getAreaCode());
     }
 }
