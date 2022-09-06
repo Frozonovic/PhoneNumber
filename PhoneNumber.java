@@ -9,10 +9,17 @@ import java.lang.StringBuilder;
  */
 public class PhoneNumber
 {
+    // Variables
     private final String _originalNumber;
     private final String _convertedNumber;
 
 
+    //Constructor
+    /**
+     * Initializes an instance of the PhoneNumber class
+     *
+     * @param phoneNumber The original phone number inputted
+     */
     public PhoneNumber(String phoneNumber)
     {
         StringBuilder sb = new StringBuilder();
@@ -22,6 +29,7 @@ public class PhoneNumber
         {
             char c = phoneNumber.charAt(i);
 
+            // Cases for each letter variant mapped to a specific number
             switch (c)
             {
                 case 'a', 'b', 'c', 'A', 'B', 'C':
@@ -87,7 +95,6 @@ public class PhoneNumber
             returnValue = sb.toString();
         }
 
-
         return returnValue;
     }
 
@@ -105,11 +112,5 @@ public class PhoneNumber
         sb.append(_originalNumber).append('\n');
         sb.append(_convertedNumber);
         return sb.toString();
-    }
-    public static void main(String[] args)
-    {
-        PhoneNumber f = new PhoneNumber("360-957-8562");
-        System.out.println(f);
-        System.out.println(f.getAreaCode());
     }
 }
