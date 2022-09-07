@@ -69,6 +69,7 @@ public class PhoneNumber
     }
 
 
+    // Methods
     /**
      * Accesses the area code from stored convertedNumber
      *
