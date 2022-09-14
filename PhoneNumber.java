@@ -7,65 +7,27 @@ import java.lang.StringBuilder;
  *
  * @author blee20@georgefox.edu
  */
-public class PhoneNumber
+public class PhoneNumber implements Comparable<PhoneNumber>
 {
     // Variables
-    private final String _originalNumber;
-    private final String _convertedNumber;
+    private final String _areaCode;
+    private final String _prefix;
+    private final String _lineNumber;
 
 
     //Constructor
     /**
      * Initializes an instance of the PhoneNumber class
      *
-     * @param phoneNumber The original phone number inputted
+     * @param areaCode The original area code inputted (first three digits)
+     * @param prefix The original prefix inputted (middle three digits)
+     * @param lineNumber The original line number inputted (last four digits)
      */
-    public PhoneNumber(String phoneNumber)
+    public PhoneNumber(String areaCode, String prefix, String lineNumber)
     {
-        StringBuilder sb = new StringBuilder();
-
-        // Logic to convert letter values to proper number values
-        for (int i = 0; i < phoneNumber.length(); i++)
-        {
-            char c = phoneNumber.charAt(i);
-
-            // Cases for each letter variant mapped to a specific number
-            switch (c)
-            {
-                case 'a', 'b', 'c', 'A', 'B', 'C':
-                    sb.append('2');
-                    break;
-                case 'd', 'e', 'f', 'D', 'E', 'F':
-                    sb.append('3');
-                    break;
-                case 'g', 'h', 'i', 'G', 'H', 'I':
-                    sb.append('4');
-                    break;
-                case 'j', 'k', 'l', 'J', 'K', 'L':
-                    sb.append('5');
-                    break;
-                case 'm', 'n', 'o', 'M', 'N', 'O':
-                    sb.append('6');
-                    break;
-                case 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S':
-                    sb.append('7');
-                    break;
-                case 't', 'u', 'v', 'T', 'U', 'V':
-                    sb.append('8');
-                    break;
-                case 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z':
-                    sb.append('9');
-                    break;
-                case '-':
-                    break;
-                default:
-                    sb.append(c);
-            }
-        }
-
-        _originalNumber = phoneNumber;
-        _convertedNumber = sb.toString();
-
+        _areaCode = areaCode;
+        _prefix = prefix;
+        _lineNumber = lineNumber;
     }
 
 
@@ -73,30 +35,29 @@ public class PhoneNumber
     /**
      * Accesses the area code from stored convertedNumber
      *
-     * @return The area code depending on type of phone number (returnValue)
+     * @return The current area code assigned to _areaCode
      */
     public String getAreaCode()
     {
-        String returnValue;
-        StringBuilder sb = new StringBuilder();
+        return _areaCode;
+    }
 
-        // Logic to determine phone number type and return appropriately
-        if (_convertedNumber.startsWith("1800"))
-        {
-            returnValue = "1800";
-        }
 
-        else
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                char c = _originalNumber.charAt(i);
-                sb.append(c);
-            }
-            returnValue = sb.toString();
-        }
+    public String getPrefix()
+    {
+        return _prefix;
+    }
 
-        return returnValue;
+
+    public String getLineNumber()
+    {
+        return _lineNumber;
+    }
+
+
+    public String getDigits()
+    {
+        return _areaCode + _prefix + _lineNumber;
     }
 
 
@@ -109,9 +70,29 @@ public class PhoneNumber
     {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("java.PhoneNumber\n");
-        sb.append(_originalNumber).append('\n');
-        sb.append(_convertedNumber);
+        sb.append(_areaCode).append('-');
+        sb.append(_prefix).append('-');
+        sb.append(_lineNumber);
+
         return sb.toString();
     }
+
+
+    public int compareTo(PhoneNumber o)
+    {
+        return 1;
+    }
+
+
+    public static boolean isValidPhoneNumber(String areaCode, String prefix, String lineNumber)
+    {
+        return true;
+    }
+
+
+    public static PhoneNumber parsePhoneNumber(String phoneNumber)
+    {
+        return new PhoneNumber("1", "2", "3");
+    }
 }
+
