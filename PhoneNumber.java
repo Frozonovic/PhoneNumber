@@ -27,6 +27,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      */
     public PhoneNumber(String areaCode, String prefix, String lineNumber) throws IllegalArgumentException
     {
+        // Verifies that the given arguments can create be a proper a phone number
         if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
         {
             throw new IllegalArgumentException("Error: Must be a valid phone number");
