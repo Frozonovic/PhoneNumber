@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- * Models a phone number structured like a phone numpad
+ * Models a phone number structured like a phone numpad. Does not support alphabetical characters.
  *
  * @author blee20@georgefox.edu
  */
@@ -23,12 +23,20 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * @param areaCode The original area code inputted (first three digits)
      * @param prefix The original prefix inputted (middle three digits)
      * @param lineNumber The original line number inputted (last four digits)
+     * @throws IllegalArgumentException Thrown when phone number is in invalid format
      */
-    public PhoneNumber(String areaCode, String prefix, String lineNumber)
+    public PhoneNumber(String areaCode, String prefix, String lineNumber) throws IllegalArgumentException
     {
-        _areaCode = areaCode;
-        _prefix = prefix;
-        _lineNumber = lineNumber;
+        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
+        {
+            throw new IllegalArgumentException("Error: Must be a valid phone number");
+        }
+        else
+        {
+            _areaCode = areaCode;
+            _prefix = prefix;
+            _lineNumber = lineNumber;
+        }
     }
 
 
@@ -130,11 +138,13 @@ public class PhoneNumber implements Comparable<PhoneNumber>
         boolean returnValue = true;
         ArrayList<String> numArray = new ArrayList<>();
 
+        // Sets up ArrayList for String comparison
         for (int i = 0; i < 10; i++)
         {
             numArray.add(String.valueOf(i));
         }
 
+        // Iterates through each character of the areaCode and compares to String array contents
         for (int i = 0; i < areaCode.length(); i++)
         {
             String s = String.valueOf(areaCode.charAt(i));
@@ -146,6 +156,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
             }
         }
 
+        // Iterates through each character of the prefix and compares to String array contents
         for (int i = 0; i < prefix.length(); i++)
         {
             String s = String.valueOf(prefix.charAt(i));
@@ -157,6 +168,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
             }
         }
 
+        // Iterates through each character of the lineNumber and compares to String array contents
         for (int i = 0; i < lineNumber.length(); i++)
         {
             String s = String.valueOf(lineNumber.charAt(i));
@@ -172,15 +184,20 @@ public class PhoneNumber implements Comparable<PhoneNumber>
     }
 
 
+    /**
+     * Splits a phone number into separate chunks to check each for valid content
+     *
+     * @param phoneNumber A given PhoneNumber instance for checking validity
+     * @return Completed and valid phone number
+     * @throws IllegalArgumentException Thrown when phone number is in invalid format
+     */
     public static PhoneNumber parsePhoneNumber(String phoneNumber) throws IllegalArgumentException
     {
-        ArrayList<String> arrList = new ArrayList<>(3);
-
         String areaCode = phoneNumber.split("-")[0];
         String prefix = phoneNumber.split("-")[1];
         String lineNumber = phoneNumber.split("-")[2];
 
-        if (!isValidPhoneNumber(areaCode, prefix, lineNumber))
+        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
         {
             throw new IllegalArgumentException("Error: Must be a valid phone number");
         }
