@@ -1,5 +1,6 @@
 // Import used for string conversions
 import java.lang.StringBuilder;
+import java.util.ArrayList;
 
 
 /**
@@ -33,7 +34,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
 
     // Methods
     /**
-     * Accesses the area code from stored convertedNumber
+     * Accesses the area code from stored areaCode
      *
      * @return The current area code assigned to _areaCode
      */
@@ -43,18 +44,33 @@ public class PhoneNumber implements Comparable<PhoneNumber>
     }
 
 
+    /**
+     * Accesses the prefix from stored prefix
+     *
+     * @return The current prefix assigned to _prefix
+     */
     public String getPrefix()
     {
         return _prefix;
     }
 
 
+    /**
+     * Accesses the line number from stored lineNumber
+     *
+     * @return The current prefix assigned to _lineNumber
+     */
     public String getLineNumber()
     {
         return _lineNumber;
     }
 
 
+    /**
+     * Creates a numerical phone number from stored variables
+     *
+     * @return String containing only numerals
+     */
     public String getDigits()
     {
         return _areaCode + _prefix + _lineNumber;
@@ -78,21 +94,99 @@ public class PhoneNumber implements Comparable<PhoneNumber>
     }
 
 
+    /**
+     * Compares two PhoneNumber instances together to sort lexically
+     *
+     * @param o The object to be compared
+     * @return The value -1 if passed string is lexically less than current string, the value 0 if
+     * passed string is lexically equal to current string, and the value 1 if passed string is
+     * lexically greater than current string
+     */
     public int compareTo(PhoneNumber o)
     {
-        return 1;
+        int returnValue = 0;
+
+        if (getDigits().compareTo(o.getDigits()) < 0) {
+            returnValue = -1;
+        }
+
+        if (getDigits().compareTo(o.getDigits()) > 0) {
+            returnValue = 1;
+        }
+        return returnValue;
     }
 
 
+    /**
+     * Takes 3 arguments and checks to see if they would create a valid PhoneNumber
+     *
+     * @param areaCode The area code (first 3 digits) of PhoneNumber to verify
+     * @param prefix The prefix (middle 3 digits) of PhoneNumber to verify
+     * @param lineNumber The line number (last 4 digits) of PhoneNumber to verify
+     * @return Boolean value appropriate to verification result (returnValue)
+     */
     public static boolean isValidPhoneNumber(String areaCode, String prefix, String lineNumber)
     {
-        return true;
+        boolean returnValue = true;
+        ArrayList<String> numArray = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++)
+        {
+            numArray.add(String.valueOf(i));
+        }
+
+        for (int i = 0; i < areaCode.length(); i++)
+        {
+            String s = String.valueOf(areaCode.charAt(i));
+
+            if (!(numArray.contains(s)))
+            {
+                returnValue = false;
+                break;
+            }
+        }
+
+        for (int i = 0; i < prefix.length(); i++)
+        {
+            String s = String.valueOf(prefix.charAt(i));
+
+            if (!(numArray.contains(s)))
+            {
+                returnValue = false;
+                break;
+            }
+        }
+
+        for (int i = 0; i < lineNumber.length(); i++)
+        {
+            String s = String.valueOf(lineNumber.charAt(i));
+
+            if (!(numArray.contains(s)))
+            {
+                returnValue = false;
+                break;
+            }
+        }
+
+        return returnValue;
     }
 
 
-    public static PhoneNumber parsePhoneNumber(String phoneNumber)
+    public static PhoneNumber parsePhoneNumber(String phoneNumber) throws IllegalArgumentException
     {
-        return new PhoneNumber("1", "2", "3");
+        ArrayList<String> arrList = new ArrayList<>(3);
+
+        String areaCode = phoneNumber.split("-")[0];
+        String prefix = phoneNumber.split("-")[1];
+        String lineNumber = phoneNumber.split("-")[2];
+
+        if (!isValidPhoneNumber(areaCode, prefix, lineNumber))
+        {
+            throw new IllegalArgumentException("Error: Must be a valid phone number");
+        }
+        else
+        {
+            return new PhoneNumber(areaCode, prefix, lineNumber);
+        }
     }
 }
-
