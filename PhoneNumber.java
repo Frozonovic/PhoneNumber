@@ -115,11 +115,13 @@ public class PhoneNumber implements Comparable<PhoneNumber>
     {
         int returnValue = 0;
 
-        if (getDigits().compareTo(o.getDigits()) < 0) {
+        if (getDigits().compareTo(o.getDigits()) < 0)
+        {
             returnValue = -1;
         }
 
-        if (getDigits().compareTo(o.getDigits()) > 0) {
+        if (getDigits().compareTo(o.getDigits()) > 0)
+        {
             returnValue = 1;
         }
         return returnValue;
@@ -139,46 +141,56 @@ public class PhoneNumber implements Comparable<PhoneNumber>
         boolean returnValue = true;
         ArrayList<String> numArray = new ArrayList<>();
 
-        // Sets up ArrayList for String comparison
-        for (int i = 0; i < 10; i++)
+        // Check that all values are not null values
+        if ((areaCode != null && areaCode.length() == 3) && (prefix != null && prefix.length() == 3)
+                && (lineNumber != null && lineNumber.length() == 3))
         {
-            numArray.add(String.valueOf(i));
-        }
-
-        // Iterates through each character of the areaCode and compares to String array contents
-        for (int i = 0; i < areaCode.length(); i++)
-        {
-            String s = String.valueOf(areaCode.charAt(i));
-
-            if (!(numArray.contains(s)))
+            // Sets up ArrayList for String comparison
+            for (int i = 0; i < 10; i++)
             {
-                returnValue = false;
-                break;
+                numArray.add(String.valueOf(i));
+            }
+
+            // Iterates through each character of the areaCode and compares to String array contents
+            for (int i = 0; i < areaCode.length(); i++)
+            {
+                String s = String.valueOf(areaCode.charAt(i));
+
+                if (!(numArray.contains(s)))
+                {
+                    returnValue = false;
+                    break;
+                }
+            }
+
+            // Iterates through each character of the prefix and compares to String array contents
+            for (int i = 0; i < prefix.length(); i++)
+            {
+                String s = String.valueOf(prefix.charAt(i));
+
+                if (!(numArray.contains(s)))
+                {
+                    returnValue = false;
+                    break;
+                }
+            }
+
+            // Iterates through each character of the lineNumber and compares to String array contents
+            for (int i = 0; i < lineNumber.length(); i++)
+            {
+                String s = String.valueOf(lineNumber.charAt(i));
+
+                if (!(numArray.contains(s)))
+                {
+                    returnValue = false;
+                    break;
+                }
             }
         }
 
-        // Iterates through each character of the prefix and compares to String array contents
-        for (int i = 0; i < prefix.length(); i++)
+        else
         {
-            String s = String.valueOf(prefix.charAt(i));
-
-            if (!(numArray.contains(s)))
-            {
-                returnValue = false;
-                break;
-            }
-        }
-
-        // Iterates through each character of the lineNumber and compares to String array contents
-        for (int i = 0; i < lineNumber.length(); i++)
-        {
-            String s = String.valueOf(lineNumber.charAt(i));
-
-            if (!(numArray.contains(s)))
-            {
-                returnValue = false;
-                break;
-            }
+            returnValue = false;
         }
 
         return returnValue;
