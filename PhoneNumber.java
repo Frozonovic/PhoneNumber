@@ -25,18 +25,19 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * @param lineNumber The original line number inputted (last four digits)
      * @throws IllegalArgumentException Thrown when phone number is in invalid format
      */
-    public PhoneNumber(String areaCode, String prefix, String lineNumber) throws IllegalArgumentException
+    public PhoneNumber(String areaCode, String prefix, String lineNumber)
+            throws IllegalArgumentException
     {
         // Verifies that the given arguments can create be a proper a phone number
-        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
-        {
-            throw new IllegalArgumentException("Error: Must be a valid phone number");
-        }
-        else
+        if (isValidPhoneNumber(areaCode, prefix, lineNumber))
         {
             _areaCode = areaCode;
             _prefix = prefix;
             _lineNumber = lineNumber;
+        }
+        else
+        {
+            throw new IllegalArgumentException("Error: Must be a valid phone number");
         }
     }
 
@@ -107,9 +108,9 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * Compares two PhoneNumber instances together to sort lexically
      *
      * @param o The object to be compared
-     * @return The value -1 if passed string is lexically less than current string, the value 0 if
-     * passed string is lexically equal to current string, and the value 1 if passed string is
-     * lexically greater than current string
+     * @return The value -1 if parameter is lexically greater than current phone number, 0 if
+     * parameter is lexically equivalent to current phone number, or 1 if parameter is lexically
+     * less than current phone number
      */
     public int compareTo(PhoneNumber o)
     {
@@ -143,7 +144,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
 
         // Check that all values are not null values
         if ((areaCode != null && areaCode.length() == 3) && (prefix != null && prefix.length() == 3)
-                && (lineNumber != null && lineNumber.length() == 3))
+                && (lineNumber != null && lineNumber.length() == 4))
         {
             // Sets up ArrayList for String comparison
             for (int i = 0; i < 10; i++)

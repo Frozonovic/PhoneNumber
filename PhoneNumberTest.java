@@ -16,7 +16,7 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_ctor_allValidParams()
     {
-        // Pre: Try to construct, given valid params
+        // Pre: Try to construct, given valid parameters
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Constructed, no exceptions thrown
     }
@@ -136,5 +136,53 @@ public class PhoneNumberTest
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Returns the line number for the instance
         assertThat(num.getLineNumber(), equalTo("8383"));
+    }
+
+    @Test
+    public void test_PhoneNumber_getDigits()
+    {
+        // Pre: Must have a PhoneNumber instance
+        PhoneNumber num = new PhoneNumber("503", "538", "8383");
+        // Post: Returns the phone number in digit-only form
+        assertThat(num.getDigits(), equalTo("5035388383"));
+    }
+
+    @Test
+    public void test_PhoneNumber_toString()
+    {
+        // Pre: Must have a PhoneNumber instance
+        PhoneNumber num = new PhoneNumber("503", "538", "8383");
+        // Post: Returns the phone number in delimited form (xxx-xxx-xxxx)
+        assertThat(num.toString(), equalTo("503-538-8383"));
+    }
+
+    @Test
+    public void test_PhoneNumber_compareTo_lessThan()
+    {
+        // Pre: Must have 2 PhoneNumber instances
+        PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
+        PhoneNumber num2 = new PhoneNumber("403", "538", "8383");
+        // Post: Returns 1 because parameter is lexically less than current phone number
+        assertThat(num1.compareTo(num2), equalTo(1));
+    }
+
+    @Test
+    public void test_PhoneNumber_compareTo_equivalent()
+    {
+        // Pre: Must have 2 PhoneNumber instances
+        PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
+        PhoneNumber num2 = new PhoneNumber("503", "538", "8383");
+        // Post: Returns 0 because parameter is lexically equivalent to current phone number
+        assertThat(num1.compareTo(num2), equalTo(0));
+    }
+
+    @Test
+    public void test_PhoneNumber_compareTo_greaterThan()
+    {
+        // Pre: Must have 2 PhoneNumber instances
+        PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
+        PhoneNumber num2 = new PhoneNumber("603", "537", "8383");
+        // Post: Returns -1 because parameter is lexically greater than current phone number
+        assertThat(num1.compareTo(num2), equalTo(-1));
     }
 }
