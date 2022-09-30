@@ -386,7 +386,7 @@ public class PhoneNumberTest
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct, given phone number starting with invalid character (0)
-        PhoneNumber.parsePhoneNumber("003-538-83833");
+        PhoneNumber.parsePhoneNumber("003-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
 
@@ -396,7 +396,7 @@ public class PhoneNumberTest
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct, given phone number starting with invalid character (1)
-        PhoneNumber.parsePhoneNumber("103-538-83833");
+        PhoneNumber.parsePhoneNumber("103-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
 }
