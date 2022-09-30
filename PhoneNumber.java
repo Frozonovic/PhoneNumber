@@ -157,7 +157,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
             {
                 String s = String.valueOf(areaCode.charAt(i));
 
-                if (!(numArray.contains(s)))
+                if ((s.equals("0") && i == 0) || (s.equals("1") && i == 0) || !(numArray.contains(s)))
                 {
                     returnValue = false;
                     break;
@@ -207,17 +207,25 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      */
     public static PhoneNumber parsePhoneNumber(String phoneNumber) throws IllegalArgumentException
     {
-        String areaCode = phoneNumber.split("-")[0];
-        String prefix = phoneNumber.split("-")[1];
-        String lineNumber = phoneNumber.split("-")[2];
-
-        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
+        if (phoneNumber != null)
         {
-            throw new IllegalArgumentException("Error: Must be a valid phone number");
+            String areaCode = phoneNumber.split("-")[0];
+            String prefix = phoneNumber.split("-")[1];
+            String lineNumber = phoneNumber.split("-")[2];
+
+            if (isValidPhoneNumber(areaCode, prefix, lineNumber))
+            {
+                return new PhoneNumber(areaCode, prefix, lineNumber);
+            }
+
+            else
+            {
+                throw new IllegalArgumentException("Error: Must be a valid phone number");
+            }
         }
         else
         {
-            return new PhoneNumber(areaCode, prefix, lineNumber);
+            throw new IllegalArgumentException("Error: Must be a valid phone number");
         }
     }
 }
