@@ -76,7 +76,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given "838" instead of "8383"
+        // Pre: Try to construct
+        // Pre: Given "838" instead of "8383"
         PhoneNumber num = new PhoneNumber("503", "538", "838");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -86,7 +87,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given "5033" instead of "503"
+        // Pre: Try to construct
+        // Pre: Given "5033" instead of "503"
         PhoneNumber num = new PhoneNumber("5033", "538", "8383");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -96,7 +98,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given "5388" instead of "538"
+        // Pre: Try to construct
+        // Pre: Given "5388" instead of "538"
         PhoneNumber num = new PhoneNumber("503", "5388", "8383");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -106,7 +109,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given "83833" instead of "8383"
+        // Pre: Try to construct
+        // Pre: Given "83833" instead of "8383"
         PhoneNumber num = new PhoneNumber("503", "538", "83833");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -116,7 +120,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given area code starting with invalid character
+        // Pre: Try to construct
+        // Pre: Given area code starting with invalid character
         PhoneNumber num = new PhoneNumber("003", "538", "8383");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -126,7 +131,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to construct, given area code starting with invalid character
+        // Pre: Try to construct
+        // Pre: Given area code starting with invalid character
         PhoneNumber num = new PhoneNumber("103", "538", "8383");
         // Post: Not constructed, throws IllegalArgumentException
     }
@@ -207,6 +213,18 @@ public class PhoneNumberTest
     }
 
     @Test
+    public void test_PhoneNumber_compareTo_null()
+    {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Must have 1 PhoneNumber instance
+        PhoneNumber num = new PhoneNumber("503", "538", "8383");
+        // Post: Cannot be compared, throws IllegalArgumentError
+        num.compareTo(null);
+
+    }
+
+    @Test
     public void test_PhoneNumber_isValidPhoneNumber_allValid()
     {
         // Pre: Try to verify validity, given all valid parameters
@@ -217,7 +235,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_nullAreaCode()
     {
-        // Pre: Try to verify validity, given null area code parameter
+        // Pre: Try to verify validity
+        // Pre: Given null area code parameter
         assertThat(PhoneNumber.isValidPhoneNumber(null, "538", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -225,7 +244,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_nullPrefix()
     {
-        // Pre: Try to verify validity, given null prefix parameter
+        // Pre: Try to verify validity
+        // Pre: Given null prefix parameter
         assertThat(PhoneNumber.isValidPhoneNumber("503", null, "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -233,7 +253,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_nullLineNumber()
     {
-        // Pre: Try to verify validity, given null prefix parameter
+        // Pre: Try to verify validity
+        // Pre: Given null prefix parameter
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", null), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -241,7 +262,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooFewDigits()
     {
-        // Pre: Try to verify validity, given "50" instead of "503"
+        // Pre: Try to verify validity
+        // Pre: Given "50" instead of "503"
         assertThat(PhoneNumber.isValidPhoneNumber("50", "538", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -249,7 +271,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooFewDigits()
     {
-        // Pre: Try to verify validity, given "53" instead of "538"
+        // Pre: Try to verify validity
+        // Pre: Given "53" instead of "538"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "53", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -257,7 +280,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooFewDigits()
     {
-        // Pre: Try to verify validity, given "838" instead of "8383"
+        // Pre: Try to verify validity
+        // Pre: Given "838" instead of "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", "838"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -265,7 +289,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooManyDigits()
     {
-        // Pre: Try to verify validity, given "5033" instead of "503"
+        // Pre: Try to verify validity
+        // Pre: Given "5033" instead of "503"
         assertThat(PhoneNumber.isValidPhoneNumber("5033", "538", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -273,7 +298,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooManyDigits()
     {
-        // Pre: Try to verify validity, given "5388" instead of "538"
+        // Pre: Try to verify validity
+        // Pre: Given "5388" instead of "538"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "5388", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -281,7 +307,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooManyDigits()
     {
-        // Pre: Try to verify validity, given "83833" instead of "8383"
+        // Pre: Try to verify validity
+        // Pre: Given "83833" instead of "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", "83833"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -289,7 +316,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithZero()
     {
-        // Pre: Try to verify validity, given area code starting with invalid character (0)
+        // Pre: Try to verify validity
+        // Pre: Given area code starting with invalid character (0)
         assertThat(PhoneNumber.isValidPhoneNumber("003", "538", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -297,7 +325,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithOne()
     {
-        // Pre: Try to verify validity, given area code starting with invalid character (1)
+        // Pre: Try to verify validity
+        // Pre: Given area code starting with invalid character (1)
         assertThat(PhoneNumber.isValidPhoneNumber("103", "538", "8383"), equalTo(false));
         // Post: Verifies phone number and deems invalid, returns false
     }
@@ -305,7 +334,8 @@ public class PhoneNumberTest
     @Test
     public void test_PhoneNumber_parsePhoneNumber_allValid()
     {
-        // Pre: Try to parse phone number and construct, given valid parameter
+        // Pre: Try to parse phone number and construct
+        // Pre: Given all valid parameter
         PhoneNumber.parsePhoneNumber("503-538-8383");
         // Post: Parsed correctly and constructed, no exceptions thrown
     }
@@ -315,7 +345,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given invalid parameter
+        // Pre: Try to parse phone number and construct
+        // Pre: Given null parameter
         PhoneNumber.parsePhoneNumber(null);
         // Post: Cannot be parsed or constructed, throws IllegalArgumentException
     }
@@ -325,7 +356,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "50-538-8383" instead of "503-538-8383"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "50-538-8383" instead of "503-538-8383"
         PhoneNumber.parsePhoneNumber("50-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -335,7 +367,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "503-53-8383" instead of "503-538-8383"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "503-53-8383" instead of "503-538-8383"
         PhoneNumber.parsePhoneNumber("503-53-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -345,7 +378,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "503-538-838" instead of "503-538-8383"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "503-538-838" instead of "503-538-8383"
         PhoneNumber.parsePhoneNumber("503-538-838");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -355,7 +389,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "5033-538-8383" instead of "503-538-8383"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "5033-538-8383" instead of "503-538-8383"
         PhoneNumber.parsePhoneNumber("5033-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -365,7 +400,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "503-5388-8383" instead of "503-538-8383"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "503-5388-8383" instead of "503-538-8383"
         PhoneNumber.parsePhoneNumber("503-5388-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -375,7 +411,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given "503-538-8383" instead of "503-538-83833"
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "503-538-8383" instead of "503-538-83833"
         PhoneNumber.parsePhoneNumber("503-538-83833");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -385,7 +422,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given phone number starting with invalid character (0)
+        // Pre: Try to parse phone number and construct
+        // Given phone number starting with invalid character (0)
         PhoneNumber.parsePhoneNumber("003-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
@@ -395,7 +433,8 @@ public class PhoneNumberTest
     {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
-        // Pre: Try to parse phone number and construct, given phone number starting with invalid character (1)
+        // Pre: Try to parse phone number and construct
+        // Pre: Given phone number starting with invalid character (1)
         PhoneNumber.parsePhoneNumber("103-538-8383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }

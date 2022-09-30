@@ -10,6 +10,12 @@ import java.util.ArrayList;
  */
 public class PhoneNumber implements Comparable<PhoneNumber>
 {
+    // Constants
+    private final int LESS_THAN = -1;
+    private final int EQUIVALENT = 0;
+    private final int GREATER_THAN = 1;
+
+
     // Variables
     private final String _areaCode;
     private final String _prefix;
@@ -114,18 +120,24 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      */
     public int compareTo(PhoneNumber o)
     {
-        int returnValue = 0;
-
-        if (getDigits().compareTo(o.getDigits()) < 0)
+        try
         {
-            returnValue = -1;
-        }
+            int returnValue = EQUIVALENT;
 
-        if (getDigits().compareTo(o.getDigits()) > 0)
-        {
-            returnValue = 1;
+            if (getDigits().compareTo(o.getDigits()) < EQUIVALENT) {
+                returnValue = LESS_THAN;
+            }
+
+            if (getDigits().compareTo(o.getDigits()) > EQUIVALENT) {
+                returnValue = GREATER_THAN;
+            }
+
+            return returnValue;
         }
-        return returnValue;
+        catch (NullPointerException e)
+        {
+            throw new IllegalArgumentException("Error: Must be a valid phone number");
+        }
     }
 
 
@@ -207,7 +219,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      */
     public static PhoneNumber parsePhoneNumber(String phoneNumber) throws IllegalArgumentException
     {
-        if (phoneNumber != null)
+        try
         {
             String areaCode = phoneNumber.split("-")[0];
             String prefix = phoneNumber.split("-")[1];
@@ -223,7 +235,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
                 throw new IllegalArgumentException("Error: Must be a valid phone number");
             }
         }
-        else
+        catch (NullPointerException e)
         {
             throw new IllegalArgumentException("Error: Must be a valid phone number");
         }
