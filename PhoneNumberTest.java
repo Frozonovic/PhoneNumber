@@ -686,6 +686,28 @@ public class PhoneNumberTest
     }
 
     @Test
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndPrefix_tooManyDigits()
+    {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "5033-5388-8383" instead of "503-538-8383"
+        PhoneNumber.parsePhoneNumber("5033-5388-8383");
+        // Post: Cannot be constructed, throws IllegalArgumentException
+    }
+
+    @Test
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndLineNumber_tooManyDigits()
+    {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "5033-538-83833" instead of "503-538-8383"
+        PhoneNumber.parsePhoneNumber("5033-538-83833");
+        // Post: Cannot be constructed, throws IllegalArgumentException
+    }
+
+    @Test
     public void test_PhoneNumber_parsePhoneNumber_invalidPrefix_tooManyDigits()
     {
         // Only let this test pass if this specific exception is thrown before the end
@@ -697,6 +719,17 @@ public class PhoneNumberTest
     }
 
     @Test
+    public void test_PhoneNumber_parsePhoneNumber_invalidPrefixAndLineNumber_tooManyDigits()
+    {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "503-5388-83833" instead of "503-538-8383"
+        PhoneNumber.parsePhoneNumber("503-5388-83833");
+        // Post: Cannot be constructed, throws IllegalArgumentException
+    }
+
+    @Test
     public void test_PhoneNumber_parsePhoneNumber_invalidLineNumber_tooManyDigits()
     {
         // Only let this test pass if this specific exception is thrown before the end
@@ -704,6 +737,17 @@ public class PhoneNumberTest
         // Pre: Try to parse phone number and construct
         // Pre: Given "503-538-8383" instead of "503-538-83833"
         PhoneNumber.parsePhoneNumber("503-538-83833");
+        // Post: Cannot be constructed, throws IllegalArgumentException
+    }
+
+    @Test
+    public void test_PHoneNumber_parsePhoneNumber_allInvalid_tooManyDigits()
+    {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Try to parse phone number and construct
+        // Pre: Given "5033-538-8383" instead of "503-538-8383"
+        PhoneNumber.parsePhoneNumber("5033-5388-83833");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
 
