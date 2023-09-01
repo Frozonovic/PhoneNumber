@@ -71,9 +71,9 @@ public class PhoneNumber
 
     // Methods
     /**
-     * Accesses the area code from stored convertedNumber
+     * Fetches the area code for the current PhoneNumber object
      *
-     * @return The area code depending on type of phone number (returnValue)
+     * @return The area code of the current object
      */
     public String getAreaCode()
     {
