@@ -18,54 +18,47 @@ public class PhoneNumber
     /**
      * Initializes an instance of the PhoneNumber class
      *
-     * @param phoneNumber The original phone number inputted
+     * @param phoneNumber User-inputted string
      */
-    public PhoneNumber(String phoneNumber)
-    {
+    public PhoneNumber(String phoneNumber) {
         StringBuilder sb = new StringBuilder();
 
+        if (phoneNumber == null) {
+            System.out.print("Error: Must provide a number");
+            System.exit(1);
+        }
+
         // Logic to convert letter values to proper number values
-        for (int i = 0; i < phoneNumber.length(); i++)
-        {
+        for (int i = 0; i < phoneNumber.length(); i++) {
+
             char c = phoneNumber.charAt(i);
 
             // Cases for each letter variant mapped to a specific number
-            switch (c)
-            {
-                case 'a', 'b', 'c', 'A', 'B', 'C':
-                    sb.append('2');
-                    break;
-                case 'd', 'e', 'f', 'D', 'E', 'F':
-                    sb.append('3');
-                    break;
-                case 'g', 'h', 'i', 'G', 'H', 'I':
-                    sb.append('4');
-                    break;
-                case 'j', 'k', 'l', 'J', 'K', 'L':
-                    sb.append('5');
-                    break;
-                case 'm', 'n', 'o', 'M', 'N', 'O':
-                    sb.append('6');
-                    break;
-                case 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S':
-                    sb.append('7');
-                    break;
-                case 't', 'u', 'v', 'T', 'U', 'V':
-                    sb.append('8');
-                    break;
-                case 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z':
-                    sb.append('9');
-                    break;
-                case '-':
-                    break;
-                default:
-                    sb.append(c);
+            switch (c) {
+                case 'a', 'b', 'c', 'A', 'B', 'C' -> sb.append('2');
+                case 'd', 'e', 'f', 'D', 'E', 'F' -> sb.append('3');
+                case 'g', 'h', 'i', 'G', 'H', 'I' -> sb.append('4');
+                case 'j', 'k', 'l', 'J', 'K', 'L' -> sb.append('5');
+                case 'm', 'n', 'o', 'M', 'N', 'O' -> sb.append('6');
+                case 'p', 'q', 'r', 's', 'P', 'Q', 'R', 'S' -> sb.append('7');
+                case 't', 'u', 'v', 'T', 'U', 'V' -> sb.append('8');
+                case 'w', 'x', 'y', 'z', 'W', 'X', 'Y', 'Z' -> sb.append('9');
+                case '-', '(', ')' -> { }
+                case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> sb.append(c);
+                default -> {
+                    System.out.format("Error: Input may not contain %c", c);
+                    System.exit(1);
+                }
             }
         }
 
-        _originalNumber = phoneNumber;
-        _convertedNumber = sb.toString();
+        if (sb.length() != 10 && sb.length() != 11) {
+            System.out.print("Error: Invalid phone number length");
+            System.exit(1);
+        }
 
+        _originalNumber = phoneNumber;
+        _convertedNumber = String.valueOf(sb);
     }
 
 
