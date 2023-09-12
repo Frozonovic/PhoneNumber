@@ -23,9 +23,11 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
      * @param lineNumber The original line number inputted (last four digits)
      */
     public PhoneNumber(String areaCode, String prefix, String lineNumber) {
-        // Verifies that the given arguments can create be a proper a phone number
-        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber))) {
-            throw new IllegalArgumentException("Error: Must be a valid phone number");
+        // Verifies that the given arguments can create a proper a phone number
+        if (areaCode == null || prefix == null || lineNumber == null) {
+            throw new NullPointerException("Error: Must provide valid parameters");
+        } else if (!(isValidPhoneNumber(areaCode, prefix, lineNumber))) {
+            throw new IllegalArgumentException("Error: Must provide valid parameters");
         } else {
             _areaCode = areaCode;
             _prefix = prefix;
@@ -106,6 +108,11 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
      * lexically greater than the current PhoneNumber
      */
     public int compareTo(PhoneNumber o) {
+        // Ensure a PhoneNumber is given
+        if (o == null) {
+            throw new NullPointerException("Error: Must provide a PhoneNumber to compare");
+        }
+
         int result = 0;
 
         if (Long.parseLong(o.getDigits()) < Long.parseLong(getDigits())) {
@@ -144,6 +151,10 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
      * @return New object instance
      */
     public static PhoneNumber parsePhoneNumber(String phoneNumber) {
+        // Ensure something is given
+        if (phoneNumber == null) {
+            throw new NullPointerException("Error: Must provide a valid parameter");
+        }
         String areaCode = phoneNumber.split("-")[0];
         String prefix = phoneNumber.split("-")[1];
         String lineNumber = phoneNumber.split("-")[2];
