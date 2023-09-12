@@ -1,6 +1,5 @@
-// Import used for string conversions
+// Imports
 import java.lang.StringBuilder;
-import java.util.ArrayList;
 
 
 /**
@@ -8,15 +7,14 @@ import java.util.ArrayList;
  *
  * @author blee20@georgefox.edu
  */
-public class PhoneNumber implements Comparable<PhoneNumber>
-{
-    // Variables
+public class PhoneNumber implements Comparable<PhoneNumber> {
+    // Internal State
     private final String _areaCode;
     private final String _prefix;
     private final String _lineNumber;
 
 
-    //Constructor
+    // Constructor
     /**
      * Initializes an instance of the PhoneNumber class
      *
@@ -25,15 +23,11 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * @param lineNumber The original line number inputted (last four digits)
      * @throws IllegalArgumentException Thrown when phone number is in invalid format
      */
-    public PhoneNumber(String areaCode, String prefix, String lineNumber) throws IllegalArgumentException
-    {
+    public PhoneNumber(String areaCode, String prefix, String lineNumber) {
         // Verifies that the given arguments can create be a proper a phone number
-        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
-        {
+        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber))) {
             throw new IllegalArgumentException("Error: Must be a valid phone number");
-        }
-        else
-        {
+        } else {
             _areaCode = areaCode;
             _prefix = prefix;
             _lineNumber = lineNumber;
@@ -47,8 +41,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      *
      * @return The current area code assigned to _areaCode
      */
-    public String getAreaCode()
-    {
+    public String getAreaCode() {
         return _areaCode;
     }
 
@@ -58,8 +51,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      *
      * @return The current prefix assigned to _prefix
      */
-    public String getPrefix()
-    {
+    public String getPrefix() {
         return _prefix;
     }
 
@@ -69,8 +61,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      *
      * @return The current prefix assigned to _lineNumber
      */
-    public String getLineNumber()
-    {
+    public String getLineNumber() {
         return _lineNumber;
     }
 
@@ -80,9 +71,14 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      *
      * @return String containing only numerals
      */
-    public String getDigits()
-    {
-        return _areaCode + _prefix + _lineNumber;
+    public String getDigits() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(_areaCode);
+        sb.append(_prefix);
+        sb.append(_lineNumber);
+
+        return sb.toString();
     }
 
 
@@ -91,8 +87,7 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      *
      * @return The string created using a StringBuilder (sb)
      */
-    public String toString()
-    {
+    public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append(_areaCode).append('-');
@@ -111,18 +106,18 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * passed string is lexically equal to current string, and the value 1 if passed string is
      * lexically greater than current string
      */
-    public int compareTo(PhoneNumber o)
-    {
-        int returnValue = 0;
+    public int compareTo(PhoneNumber o) {
+        int result = 0;
 
-        if (getDigits().compareTo(o.getDigits()) < 0) {
-            returnValue = -1;
+        if (Long.parseLong(o.getDigits()) < Long.parseLong(getDigits())) {
+            result = -1;
         }
 
-        if (getDigits().compareTo(o.getDigits()) > 0) {
-            returnValue = 1;
+        if (Long.parseLong(o.getDigits()) > Long.parseLong(getDigits())) {
+            result = 1;
         }
-        return returnValue;
+
+        return result;
     }
 
 
@@ -134,54 +129,12 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * @param lineNumber The line number (last 4 digits) of PhoneNumber to verify
      * @return Boolean value appropriate to verification result (returnValue)
      */
-    public static boolean isValidPhoneNumber(String areaCode, String prefix, String lineNumber)
-    {
-        boolean returnValue = true;
-        ArrayList<String> numArray = new ArrayList<>();
+    public static boolean isValidPhoneNumber(String areaCode, String prefix, String lineNumber) {
+        boolean checkAreaCode = areaCode.matches("[2-9]\\d{2}");
+        boolean checkPrefix = prefix.matches("[2-9]\\d{2}");
+        boolean checkLineNumber = lineNumber.matches("\\d{4}");
 
-        // Sets up ArrayList for String comparison
-        for (int i = 0; i < 10; i++)
-        {
-            numArray.add(String.valueOf(i));
-        }
-
-        // Iterates through each character of the areaCode and compares to String array contents
-        for (int i = 0; i < areaCode.length(); i++)
-        {
-            String s = String.valueOf(areaCode.charAt(i));
-
-            if (!(numArray.contains(s)))
-            {
-                returnValue = false;
-                break;
-            }
-        }
-
-        // Iterates through each character of the prefix and compares to String array contents
-        for (int i = 0; i < prefix.length(); i++)
-        {
-            String s = String.valueOf(prefix.charAt(i));
-
-            if (!(numArray.contains(s)))
-            {
-                returnValue = false;
-                break;
-            }
-        }
-
-        // Iterates through each character of the lineNumber and compares to String array contents
-        for (int i = 0; i < lineNumber.length(); i++)
-        {
-            String s = String.valueOf(lineNumber.charAt(i));
-
-            if (!(numArray.contains(s)))
-            {
-                returnValue = false;
-                break;
-            }
-        }
-
-        return returnValue;
+        return checkAreaCode && checkPrefix && checkLineNumber;
     }
 
 
@@ -192,19 +145,11 @@ public class PhoneNumber implements Comparable<PhoneNumber>
      * @return Completed and valid phone number
      * @throws IllegalArgumentException Thrown when phone number is in invalid format
      */
-    public static PhoneNumber parsePhoneNumber(String phoneNumber) throws IllegalArgumentException
-    {
+    public static PhoneNumber parsePhoneNumber(String phoneNumber) {
         String areaCode = phoneNumber.split("-")[0];
         String prefix = phoneNumber.split("-")[1];
         String lineNumber = phoneNumber.split("-")[2];
 
-        if (!(isValidPhoneNumber(areaCode, prefix, lineNumber)))
-        {
-            throw new IllegalArgumentException("Error: Must be a valid phone number");
-        }
-        else
-        {
-            return new PhoneNumber(areaCode, prefix, lineNumber);
-        }
+        return new PhoneNumber(areaCode, prefix, lineNumber);
     }
 }
