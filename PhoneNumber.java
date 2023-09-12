@@ -3,7 +3,7 @@ import java.lang.StringBuilder;
 
 
 /**
- * Models a phone number structured like a phone numpad. Does not support alphabetical characters.
+ * A phone number class adhering to the North American Numbering Plan specifications
  *
  * @author blee20@georgefox.edu
  */
@@ -21,7 +21,6 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
      * @param areaCode The original area code inputted (first three digits)
      * @param prefix The original prefix inputted (middle three digits)
      * @param lineNumber The original line number inputted (last four digits)
-     * @throws IllegalArgumentException Thrown when phone number is in invalid format
      */
     public PhoneNumber(String areaCode, String prefix, String lineNumber) {
         // Verifies that the given arguments can create be a proper a phone number
@@ -37,9 +36,9 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
     // Methods
     /**
-     * Accesses the area code from stored areaCode
+     * Fetches the current object's area code
      *
-     * @return The current area code assigned to _areaCode
+     * @return Area code string
      */
     public String getAreaCode() {
         return _areaCode;
@@ -47,9 +46,9 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
 
     /**
-     * Accesses the prefix from stored prefix
+     * Fetches the current object's prefix
      *
-     * @return The current prefix assigned to _prefix
+     * @return Prefix string
      */
     public String getPrefix() {
         return _prefix;
@@ -57,9 +56,9 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
 
     /**
-     * Accesses the line number from stored lineNumber
+     * Fetches the current object's line number
      *
-     * @return The current prefix assigned to _lineNumber
+     * @return Line number string
      */
     public String getLineNumber() {
         return _lineNumber;
@@ -69,7 +68,7 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     /**
      * Creates a numerical phone number from stored variables
      *
-     * @return String containing only numerals
+     * @return Numerical string
      */
     public String getDigits() {
         StringBuilder sb = new StringBuilder();
@@ -83,9 +82,9 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
 
     /**
-     * Accesses both versions of the phone number stored and builds a string for them
+     * Creates a string of the current phone number
      *
-     * @return The string created using a StringBuilder (sb)
+     * @return Phone number string (###-###-####)
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -99,12 +98,12 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
 
     /**
-     * Compares two PhoneNumber instances together to sort lexically
+     * Compares two PhoneNumber instances together
      *
      * @param o The object to be compared
-     * @return The value -1 if passed string is lexically less than current string, the value 0 if
-     * passed string is lexically equal to current string, and the value 1 if passed string is
-     * lexically greater than current string
+     * @return The value -1 if passed PhoneNumber is lexically less than the current PhoneNumber, the value 0 if
+     * passed PhoneNumber is lexically equal to the current PhoneNumber, and the value 1 if passed PhoneNumber is
+     * lexically greater than the current PhoneNumber
      */
     public int compareTo(PhoneNumber o) {
         int result = 0;
@@ -124,10 +123,10 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     /**
      * Takes 3 arguments and checks to see if they would create a valid PhoneNumber
      *
-     * @param areaCode The area code (first 3 digits) of PhoneNumber to verify
-     * @param prefix The prefix (middle 3 digits) of PhoneNumber to verify
-     * @param lineNumber The line number (last 4 digits) of PhoneNumber to verify
-     * @return Boolean value appropriate to verification result (returnValue)
+     * @param areaCode An area code string
+     * @param prefix A prefix string
+     * @param lineNumber A line number string
+     * @return True if each part adheres to the North American Numbering Plan, else false
      */
     public static boolean isValidPhoneNumber(String areaCode, String prefix, String lineNumber) {
         boolean checkAreaCode = areaCode.matches("[2-9]\\d{2}");
@@ -139,11 +138,10 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
 
 
     /**
-     * Splits a phone number into separate chunks to check each for valid content
+     * Parses a given phone number string
      *
-     * @param phoneNumber A given PhoneNumber instance for checking validity
-     * @return Completed and valid phone number
-     * @throws IllegalArgumentException Thrown when phone number is in invalid format
+     * @param phoneNumber A parseable phone number string (###-###-###)
+     * @return New object instance
      */
     public static PhoneNumber parsePhoneNumber(String phoneNumber) {
         String areaCode = phoneNumber.split("-")[0];
