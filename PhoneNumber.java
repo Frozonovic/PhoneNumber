@@ -8,6 +8,12 @@ import java.lang.StringBuilder;
  * @author blee20@georgefox.edu
  */
 public class PhoneNumber implements Comparable<PhoneNumber> {
+    // Constants
+    private static final int LESS_THAN = -1;
+    private static final int EQUAL = 0;
+    private static final int GREAT_THAN = 1;
+
+
     // Internal State
     private final String _areaCode;
     private final String _prefix;
@@ -25,7 +31,7 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     public PhoneNumber(String areaCode, String prefix, String lineNumber) {
         // Verifies that the given arguments can create a proper a phone number
         if (areaCode == null || prefix == null || lineNumber == null) {
-            throw new NullPointerException("Error: Must provide valid parameters");
+            throw new IllegalArgumentException("Error: Parameters cannot be null");
         } else if (!(isValidPhoneNumber(areaCode, prefix, lineNumber))) {
             throw new IllegalArgumentException("Error: Must provide valid parameters");
         } else {
@@ -110,17 +116,17 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     public int compareTo(PhoneNumber o) {
         // Ensure a PhoneNumber is given
         if (o == null) {
-            throw new NullPointerException("Error: Must provide a PhoneNumber to compare");
+            throw new IllegalArgumentException("Error: Parameter cannot be null");
         }
 
-        int result = 0;
+        int result = EQUAL;
 
         if (Long.parseLong(o.getDigits()) < Long.parseLong(getDigits())) {
-            result = -1;
+            result = LESS_THAN;
         }
 
         if (Long.parseLong(o.getDigits()) > Long.parseLong(getDigits())) {
-            result = 1;
+            result = GREAT_THAN;
         }
 
         return result;
@@ -153,12 +159,12 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
     public static PhoneNumber parsePhoneNumber(String phoneNumber) {
         // Ensure something is given
         if (phoneNumber == null) {
-            throw new NullPointerException("Error: Must provide a valid parameter");
+            throw new IllegalArgumentException("Error: Parameter cannot be null");
         }
 
         // Ensure phone number is formatted properly
         if (!phoneNumber.matches("\\d{3}-\\d{3}-\\d{4}")) {
-            throw new IllegalArgumentException("Error: Must provide valid parameters");
+            throw new IllegalArgumentException("Error: Parameter must have proper format");
         }
 
         String areaCode = phoneNumber.split("-")[0];

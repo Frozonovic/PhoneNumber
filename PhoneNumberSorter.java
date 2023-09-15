@@ -8,12 +8,21 @@ import java.util.ArrayList;
  * @author blee20@georgefox.edu
  */
 public class PhoneNumberSorter {
+    // Constants
+    private static final int NO_ARGS_CODE = 1;
+    private static final int INVALID_CODE = 2;
+    private static final int NO_ARGS = 0;
+    private static final int START_INDEX = 0;
+    private static final int EQUAL = 0;
+
+
+    // Main Function
     public static void main(String[] args) {
         try {
-            if (args.length == 0) {
+            if (args.length == NO_ARGS) {
                 // Ensure that at least one phone number is given as an argument
                 System.err.println("No arguments given");
-                System.exit(1);
+                System.exit(NO_ARGS_CODE);
             }
 
             // Initiate array to store phone numbers
@@ -25,14 +34,13 @@ public class PhoneNumberSorter {
             }
 
             // Logic to compare each phone number (p) to each other phone number (n)
-            for (int i = 0; i < a.size(); i++) {
+            for (int i = START_INDEX; i < a.size(); i++) {
                 PhoneNumber p = a.get(i);
 
                 for (int j = i; j < a.size(); j++) {
                     PhoneNumber n = a.get(j);
 
-                    if (p.compareTo(n) < 0) {
-                        // If a number with a smaller value is found, p is replaced
+                    if (p.compareTo(n) < EQUAL) {
                         p = n;
                     }
                 }
@@ -44,12 +52,10 @@ public class PhoneNumberSorter {
             for (PhoneNumber pn : a) {
                 System.out.println(pn.toString());
             }
-
-            System.exit(0);
         } catch (IllegalArgumentException e) {
             // Catches any improperly formatted phone numbers
-            System.err.println("Error: Must be a valid phone number");
-            System.exit(2);
+            System.err.println("Error: Phone number must be properly formatted");
+            System.exit(INVALID_CODE);
         }
     }
 }
