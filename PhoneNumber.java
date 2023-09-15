@@ -155,6 +155,12 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
         if (phoneNumber == null) {
             throw new NullPointerException("Error: Must provide a valid parameter");
         }
+
+        // Ensure phone number is formatted properly
+        if (!phoneNumber.matches("\\d{3}-\\d{3}-\\d{4}")) {
+            throw new IllegalArgumentException("Error: Must provide valid parameters");
+        }
+
         String areaCode = phoneNumber.split("-")[0];
         String prefix = phoneNumber.split("-")[1];
         String lineNumber = phoneNumber.split("-")[2];
