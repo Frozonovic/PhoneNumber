@@ -8,14 +8,12 @@ import static org.junit.Assert.*;
  *
  * @author blee20@georgefox.edu
  */
-public class PhoneNumberTest
-{
+public class PhoneNumberTest {
     @Rule
     public final ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void test_PhoneNumber_ctor_allValid()
-    {
+    public void test_PhoneNumber_ctor_allValid() {
         // Pre: Try to construct
         // Pre: Given valid parameters
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
@@ -23,8 +21,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullAreaCode()
-    {
+    public void test_PhoneNumber_ctor_nullAreaCode() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -34,8 +31,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullAreaCodeAndPrefix()
-    {
+    public void test_PhoneNumber_ctor_nullAreaCodeAndPrefix() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -45,8 +41,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullAreaCodeAndLineNumber()
-    {
+    public void test_PhoneNumber_ctor_nullAreaCodeAndLineNumber() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -56,8 +51,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullPrefix()
-    {
+    public void test_PhoneNumber_ctor_nullPrefix() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -67,8 +61,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullPrefixAndLineNumber()
-    {
+    public void test_PhoneNumber_ctor_nullPrefixAndLineNumber() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -78,8 +71,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_nullLineNumber()
-    {
+    public void test_PhoneNumber_ctor_nullLineNumber() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -89,8 +81,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_allNull()
-    {
+    public void test_PhoneNumber_ctor_allNull() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -100,8 +91,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCode_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCode_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -111,8 +101,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCodeAndPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCodeAndPrefix_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -122,8 +111,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCodeAndLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCodeAndLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -133,8 +121,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidPrefix_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -144,8 +131,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidPrefixAndLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidPrefixAndLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -155,8 +141,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -166,8 +151,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_allInvalid_tooFewDigits()
-    {
+    public void test_PhoneNumber_ctor_allInvalid_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -177,8 +161,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCode_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCode_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -188,8 +171,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCodeAndPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCodeAndPrefix_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -199,8 +181,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCodeAndLineNumber_TooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCodeAndLineNumber_TooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -210,8 +191,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidPrefix_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -221,8 +201,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidPrefixAndLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidPrefixAndLineNumber_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -232,8 +211,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_invalidLineNumber_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -243,8 +221,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_allInvalid_tooManyDigits()
-    {
+    public void test_PhoneNumber_ctor_allInvalid_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -254,8 +231,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCode_startsWithZero()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCode_startsWithZero() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -265,8 +241,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_ctor_invalidAreaCode_startsWithOne()
-    {
+    public void test_PhoneNumber_ctor_invalidAreaCode_startsWithOne() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to construct
@@ -276,8 +251,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_getAreaCode()
-    {
+    public void test_PhoneNumber_getAreaCode() {
         // Pre: Must have a PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Returns the area code for the instance
@@ -285,8 +259,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_getPrefix()
-    {
+    public void test_PhoneNumber_getPrefix() {
         // Pre: Must have a PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Returns the prefix for the instance
@@ -294,8 +267,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_getLineNumber()
-    {
+    public void test_PhoneNumber_getLineNumber() {
         // Pre: Must have a PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Returns the line number for the instance
@@ -303,8 +275,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_getDigits()
-    {
+    public void test_PhoneNumber_getDigits() {
         // Pre: Must have a PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
         // Post: Returns the phone number in digit-only form
@@ -312,27 +283,24 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_toString()
-    {
+    public void test_PhoneNumber_toString() {
         // Pre: Must have a PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
-        // Post: Returns the phone number in delimited form (xxx-xxx-xxxx)
+        // Post: Returns the phone number in delimited form (###-###-####)
         assertThat(num.toString(), equalTo("503-538-8383"));
     }
 
     @Test
-    public void test_PhoneNumber_compareTo_lessThan()
-    {
+    public void test_PhoneNumber_compareTo_lessThan() {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("403", "538", "8383");
         // Post: Returns 1 because parameter is lexically less than current phone number
-        assertThat(num1.compareTo(num2), equalTo(1));
+        assertThat(num1.compareTo(num2), equalTo(-1));
     }
 
     @Test
-    public void test_PhoneNumber_compareTo_equivalent()
-    {
+    public void test_PhoneNumber_compareTo_equivalent() {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("503", "538", "8383");
@@ -341,18 +309,16 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_compareTo_greaterThan()
-    {
+    public void test_PhoneNumber_compareTo_greaterThan() {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("603", "537", "8383");
         // Post: Returns -1 because parameter is lexically greater than current phone number
-        assertThat(num1.compareTo(num2), equalTo(-1));
+        assertThat(num1.compareTo(num2), equalTo(1));
     }
 
     @Test
-    public void test_PhoneNumber_compareTo_null()
-    {
+    public void test_PhoneNumber_compareTo_null() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Must have 1 PhoneNumber instance
@@ -363,16 +329,14 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_allValid()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_allValid() {
         // Pre: Try to verify validity, given all valid parameters
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", "8383"), equalTo(true));
         // Post: Verifies phone number and deems valid, returns true
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCode()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCode() {
         // Pre: Try to verify validity
         // Pre: Given null area code parameter
         assertThat(PhoneNumber.isValidPhoneNumber(null, "538", "8383"), equalTo(false));
@@ -380,8 +344,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCodeAndPrefix()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCodeAndPrefix() {
         // Pre: Try to verify validity
         // Pre: Given null area code and prefix parameter
         assertThat(PhoneNumber.isValidPhoneNumber(null, null, "8383"), equalTo(false));
@@ -389,8 +352,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCodeAndLineNumber()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullAreaCodeAndLineNumber() {
         // Pre: Try to verify validity
         // Pre: Given null area code and line number parameter
         assertThat(PhoneNumber.isValidPhoneNumber(null, "538", null), equalTo(false));
@@ -398,8 +360,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullPrefix()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullPrefix() {
         // Pre: Try to verify validity
         // Pre: Given null prefix parameter
         assertThat(PhoneNumber.isValidPhoneNumber("503", null, "8383"), equalTo(false));
@@ -407,8 +368,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullPrefixAndLineNumber()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullPrefixAndLineNumber() {
         // Pre: Try to verify validity
         // Pre: Given null area code parameter
         assertThat(PhoneNumber.isValidPhoneNumber("538", null, null), equalTo(false));
@@ -416,8 +376,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_nullLineNumber()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_nullLineNumber() {
         // Pre: Try to verify validity
         // Pre: Given null prefix parameter
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", null), equalTo(false));
@@ -425,8 +384,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_allNull()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_allNull() {
         // Pre: Try to verify validity
         // Pre: Given null area code parameter
         assertThat(PhoneNumber.isValidPhoneNumber(null, null, null), equalTo(false));
@@ -434,8 +392,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "50" instead of "503"
         assertThat(PhoneNumber.isValidPhoneNumber("50", "538", "8383"), equalTo(false));
@@ -443,8 +400,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndPrefix_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "50" and "53" instead of "503" and "538"
         assertThat(PhoneNumber.isValidPhoneNumber("50", "53", "8383"), equalTo(false));
@@ -461,8 +417,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "53" instead of "538"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "53", "8383"), equalTo(false));
@@ -470,8 +425,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefixAndLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefixAndLineNumber_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "53" and "838" instead of "538" and "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "53", "838"), equalTo(false));
@@ -479,8 +433,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "838" instead of "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", "838"), equalTo(false));
@@ -488,8 +441,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_allInvalid_tooFewDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_allInvalid_tooFewDigits() {
         // Pre: Try to verify validity
         // Pre: Given "50" instead of "503"
         assertThat(PhoneNumber.isValidPhoneNumber("50", "53", "838"), equalTo(false));
@@ -497,8 +449,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5033" instead of "503"
         assertThat(PhoneNumber.isValidPhoneNumber("5033", "538", "8383"), equalTo(false));
@@ -506,8 +457,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndPrefix_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5033" and "5388" instead of "503" and "538"
         assertThat(PhoneNumber.isValidPhoneNumber("5033", "5388", "8383"), equalTo(false));
@@ -515,8 +465,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCodeAndLineNumber_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5033" and "83833" instead of "503" and "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("5033", "538", "83833"), equalTo(false));
@@ -524,8 +473,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefix_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5388" instead of "538"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "5388", "8383"), equalTo(false));
@@ -533,8 +481,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefixAndLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidPrefixAndLineNumber_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5388" and "83833" instead of "538" and "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "5388", "83833"), equalTo(false));
@@ -542,8 +489,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidLineNumber_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "83833" instead of "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("503", "538", "83833"), equalTo(false));
@@ -551,8 +497,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_allInvalid_tooManyDigits()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_allInvalid_tooManyDigits() {
         // Pre: Try to verify validity
         // Pre: Given "5033", "5388" and "83833" instead of "503", "538", and "8383"
         assertThat(PhoneNumber.isValidPhoneNumber("5033", "5388", "83833"), equalTo(false));
@@ -560,8 +505,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithZero()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithZero() {
         // Pre: Try to verify validity
         // Pre: Given area code starting with invalid character (0)
         assertThat(PhoneNumber.isValidPhoneNumber("003", "538", "8383"), equalTo(false));
@@ -569,8 +513,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithOne()
-    {
+    public void test_PhoneNumber_isValidPhoneNumber_invalidAreaCode_startsWithOne() {
         // Pre: Try to verify validity
         // Pre: Given area code starting with invalid character (1)
         assertThat(PhoneNumber.isValidPhoneNumber("103", "538", "8383"), equalTo(false));
@@ -578,8 +521,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_allValid()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_allValid() {
         // Pre: Try to parse phone number and construct
         // Pre: Given all valid parameter
         PhoneNumber.parsePhoneNumber("503-538-8383");
@@ -587,8 +529,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_nullParameter()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_nullParameter() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -598,8 +539,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -609,8 +549,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndPrefix_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -620,8 +559,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -631,8 +569,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidPrefix_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidPrefix_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -642,8 +579,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidPrefixAndLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidPrefixAndLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -653,8 +589,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidLineNumber_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidLineNumber_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -664,8 +599,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_allInvalid_tooFewDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_allInvalid_tooFewDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -675,8 +609,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -686,8 +619,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndPrefix_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -697,8 +629,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCodeAndLineNumber_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -708,8 +639,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidPrefix_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidPrefix_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -719,8 +649,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidPrefixAndLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidPrefixAndLineNumber_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -730,8 +659,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidLineNumber_tooManyDigits()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidLineNumber_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -741,8 +669,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PHoneNumber_parsePhoneNumber_allInvalid_tooManyDigits()
-    {
+    public void test_PHoneNumber_parsePhoneNumber_allInvalid_tooManyDigits() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -752,8 +679,7 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_startsWithZero()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_startsWithZero() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
@@ -763,13 +689,22 @@ public class PhoneNumberTest
     }
 
     @Test
-    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_startsWithOne()
-    {
+    public void test_PhoneNumber_parsePhoneNumber_invalidAreaCode_startsWithOne() {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
         // Pre: Given phone number starting with invalid character (1)
         PhoneNumber.parsePhoneNumber("103-538-8383");
+        // Post: Cannot be constructed, throws IllegalArgumentException
+    }
+
+    @Test
+    public void test_PhoneNumber_parsePhoneNumber_invalidFormat_noDashes() {
+        // Only let this test pass if this specific exception is thrown before the end
+        thrown.expect(IllegalArgumentException.class);
+        // Pre: Try to parse phone number and construct
+        // Pre: Given phone number starting with invalid character (1)
+        PhoneNumber.parsePhoneNumber("5035388383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
 }
