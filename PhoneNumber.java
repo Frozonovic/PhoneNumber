@@ -109,23 +109,24 @@ public class PhoneNumber implements Comparable<PhoneNumber> {
      * Compares two PhoneNumber instances together
      *
      * @param o The object to be compared
-     * @return The value -1 if passed PhoneNumber is lexically less than the current PhoneNumber, the value 0 if
-     * passed PhoneNumber is lexically equal to the current PhoneNumber, and the value 1 if passed PhoneNumber is
-     * lexically greater than the current PhoneNumber
+     * @return The value 0 if both PhoneNumber objects are equivalent, a negative
+     * integer if this PhoneNumber object is lexicographically less than the
+     * passed PhoneNumber object, or a positive integer is this PhoneNumber
+     * object is lexicographically greater than the passed PhoneNumber object
      */
     public int compareTo(PhoneNumber o) {
         // Ensure a PhoneNumber is given
         if (o == null) {
-            throw new IllegalArgumentException("Error: Parameter cannot be null");
+            throw new NullPointerException("Error: Parameter cannot be null");
         }
 
         int result = EQUAL;
 
-        if (Long.parseLong(o.getDigits()) < Long.parseLong(getDigits())) {
+        if (Long.parseLong(o.getDigits()) > Long.parseLong(getDigits())) {
             result = LESS_THAN;
         }
 
-        if (Long.parseLong(o.getDigits()) > Long.parseLong(getDigits())) {
+        if (Long.parseLong(o.getDigits()) < Long.parseLong(getDigits())) {
             result = GREAT_THAN;
         }
 

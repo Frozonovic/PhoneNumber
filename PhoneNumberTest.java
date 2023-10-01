@@ -295,8 +295,8 @@ public class PhoneNumberTest {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("403", "538", "8383");
-        // Post: Returns 1 because parameter is lexically less than current phone number
-        assertThat(num1.compareTo(num2), equalTo(-1));
+        // Post: Returns -1 because current object is lexically less than the passed object
+        assertThat(num1.compareTo(num2), equalTo(1));
     }
 
     @Test
@@ -304,7 +304,7 @@ public class PhoneNumberTest {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("503", "538", "8383");
-        // Post: Returns 0 because parameter is lexically equivalent to current phone number
+        // Post: Returns -1 because current object is lexically equivalent to the passed object
         assertThat(num1.compareTo(num2), equalTo(0));
     }
 
@@ -313,17 +313,17 @@ public class PhoneNumberTest {
         // Pre: Must have 2 PhoneNumber instances
         PhoneNumber num1 = new PhoneNumber("503", "538", "8383");
         PhoneNumber num2 = new PhoneNumber("603", "537", "8383");
-        // Post: Returns -1 because parameter is lexically greater than current phone number
-        assertThat(num1.compareTo(num2), equalTo(1));
+        // Post: Returns 1 because current object is lexically greater than the passed object
+        assertThat(num1.compareTo(num2), equalTo(-1));
     }
 
     @Test
     public void test_PhoneNumber_compareTo_null() {
         // Only let this test pass if this specific exception is thrown before the end
-        thrown.expect(IllegalArgumentException.class);
+        thrown.expect(NullPointerException.class);
         // Pre: Must have 1 PhoneNumber instance
         PhoneNumber num = new PhoneNumber("503", "538", "8383");
-        // Post: Cannot be compared, throws IllegalArgumentError
+        // Post: Cannot be compared, throws NullPointerException
         num.compareTo(null);
 
     }
@@ -703,7 +703,7 @@ public class PhoneNumberTest {
         // Only let this test pass if this specific exception is thrown before the end
         thrown.expect(IllegalArgumentException.class);
         // Pre: Try to parse phone number and construct
-        // Pre: Given phone number starting with invalid character (1)
+        // Pre: Given improperly formatted phone number
         PhoneNumber.parsePhoneNumber("5035388383");
         // Post: Cannot be constructed, throws IllegalArgumentException
     }
